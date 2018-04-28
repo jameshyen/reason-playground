@@ -69,7 +69,7 @@ let rec insert = (l : list(int), e : int) : list(int) => {
   switch(l) {
   | [hd, ...tl] => switch(e < hd) {
     | true => [e, hd, ...tl]
-    | false => [hd, ...insert([...tl], e)]
+    | false => [hd, ...insert(tl, e)]
     }
   | [] => [e]
   }
