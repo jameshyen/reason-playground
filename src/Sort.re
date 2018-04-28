@@ -16,11 +16,9 @@ say(numbers);
 let rec all = (l : list(bool)) => {
   switch (l) {
   | [] => Js.log("All good.")
-  | [hd, ...tl] => {
-      switch(hd) {
+  | [hd, ...tl] => switch(hd) {
       | true => all(tl)
       | false => Js.log("Uh oh!")
-      }
     }
   }
 };
@@ -29,23 +27,17 @@ all(bools);
 
 let rec max = (~res : option(int) = ?, l : list(int)) : int => {
   switch(l) {
-  | [] => {
-    switch(res) {
+  | [] => switch(res) {
     | None => -1
     | Some(int) => int
     }
-  }
-  | [hd, ...tl] => {
-    switch(res) {
+  | [hd, ...tl] => switch(res) {
     | None => max(tl, ~res = hd)
-    | Some(int) => {
-      switch(hd > int) {
+    | Some(int) => switch(hd > int) {
       | true => max(tl, ~res = hd)
       | false => max(tl, ~res = int)
       }
     }
-    }
-  }
   }
 };
 
@@ -55,12 +47,10 @@ Js.log(max(numbers));
 
 let rec bubbleSort = (l : list(int)) : list(int) => {
   let sorted = switch(l) {
-  | [hd1, hd2, ...tl] => {
-    switch(hd1 > hd2) {
+  | [hd1, hd2, ...tl] => switch(hd1 > hd2) {
     | true => [hd2, ...bubbleSort([hd1, ...tl])]
     | false => [hd1, ...bubbleSort([hd2, ...tl])]
     }
-  }
   | [hd] => [hd]
   | [] => []
   };

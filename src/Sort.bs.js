@@ -152,8 +152,6 @@ function bubbleSort(_l) {
   };
 }
 
-console.log(numbers);
-
 console.log(bubbleSort(numbers));
 
 exports.numbers = numbers;
