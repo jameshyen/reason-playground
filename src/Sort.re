@@ -62,3 +62,24 @@ let rec bubbleSort = (l : list(int)) : list(int) => {
 };
 
 Js.log(bubbleSort(numbers));
+
+/* https://stackoverflow.com/questions/15915331/ocaml-insertion-sort */
+
+let rec insert = (l : list(int), e : int) : list(int) => {
+  switch(l) {
+  | [hd, ...tl] => switch(e < hd) {
+    | true => [e, hd, ...tl]
+    | false => [hd, ...insert([...tl], e)]
+    }
+  | [] => [e]
+  }
+};
+
+let rec insertSort = (l : list(int)) : list(int) => {
+  switch(l) {
+  | [] => []
+  | [hd, ...tl] => insert(insertSort(tl), hd)
+  }
+};
+
+Js.log(insertSort(numbers));

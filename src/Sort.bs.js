@@ -154,10 +154,49 @@ function bubbleSort(_l) {
 
 console.log(bubbleSort(numbers));
 
+function insert(l, e) {
+  if (l) {
+    var tl = l[1];
+    var hd = l[0];
+    var match = e < hd;
+    if (match) {
+      return /* :: */[
+              e,
+              /* :: */[
+                hd,
+                tl
+              ]
+            ];
+    } else {
+      return /* :: */[
+              hd,
+              insert(tl, e)
+            ];
+    }
+  } else {
+    return /* :: */[
+            e,
+            /* [] */0
+          ];
+  }
+}
+
+function insertSort(l) {
+  if (l) {
+    return insert(insertSort(l[1]), l[0]);
+  } else {
+    return /* [] */0;
+  }
+}
+
+console.log(insertSort(numbers));
+
 exports.numbers = numbers;
 exports.bools = bools;
 exports.say = say;
 exports.all = all;
 exports.max = max;
 exports.bubbleSort = bubbleSort;
+exports.insert = insert;
+exports.insertSort = insertSort;
 /*  Not a pure module */
